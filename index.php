@@ -18,22 +18,16 @@ and open the template in the editor.
     <script type = "text/javascript" src = "library/js/jQuery.js"></script>
     <script type = "text/javascript" src = "library/js/bootstrap.min.js"></script>
     <script type = "text/javascript" src = "library/js/script.js"></script>
+      <?php
+    echo " <script type = 'text/javascript'>"
+    . 'var _ROOT_FOLDER="'.$rootFolder.'";'
+        .'</script>';
+    ?>
     </head>
     <body class="hero-unit" style="text-align: center;">
         <div class="container">
             <span class="row" id="titlu-melodie">
             </span>
-            <div class='container'>
-                <span class=' span4 prev-button pull-left' onclick="prev();">
-                </span>
-                <div class="span6  container-album-art" style="
-                     background-image: url('./library/img/default.jpg');
-                     ">
-                    <!--<img id="FileImage" width="250" src="./library/img/default.jpg" height="250">-->
-                </div>
-                <span class=' span4 next-button pull-right' onclick="next();">
-                </span>
-            </div>
             <div id="container-player">
                 <audio  id="main-player" class="row" controls="controls">
                     <source src="<?php echo $rootFolder.
@@ -43,6 +37,24 @@ and open the template in the editor.
                   Your browser does not support the audio element.
                   </audio>
             </div>
+            <div class='container' id="container-album-arts">
+<!--                <div class=' span4 prev-button pull-left' onclick="prev();">
+                </div>-->
+                <div class="  container  container-album-art center selected-song" id="album-art" style="
+                     background-image: url('./library/img/default.jpg');
+                     ">
+                    <div class="control-album-art-top">
+                        <span>top info</span>
+                    </div>
+                    <div class="control-album-art-bottom" >
+                        <div id="action-album-art-pp" id_to_play="-1" class="cursor-pointer action-album-art-play pull-left"></div>
+                        
+                    </div>
+                </div>
+<!--                <div class=' span4 next-button pull-right' onclick="next();">
+                </div>-->
+            </div>
+            
         </div>
     </body>
 </html>
