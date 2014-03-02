@@ -1,7 +1,7 @@
 <?php
 $host="localhost";
-$userBaza="root";
-$passwBaza="";
+$userBaza="grigoroiualex";
+$passwBaza="est1892";
 $numeBaza="playerDB";
 $port=3306;
 $rootFolder="./library/music/"
