@@ -21,14 +21,16 @@ CREATE TABLE IF NOT EXISTS `playlist` (
   `order_id` INT(11) NOT NULL DEFAULT '999' COMMENT '0 - not playing;'
 ) DEFAULT CHARACTER SET "utf8" ENGINE=InnoDB;
 
-CREATE TABLE IF NOT EXISTS `playlist_mel` (
-  `id_pl` INT(11),
-  `id_mel` INT(11),
-  `playing` TINYINT(4),
-  `order_id` INT(11),
-  `artist` TEXT,
-  `title` TEXT,
-  `album` TEXT,
-  `path` TEXT
-) DEFAULT CHARACTER SET "utf8" ENGINE=InnoDB;
+create  view `playlist_mel` as 
+select `p`.`id_pl` as `id_pl`,
+`p`.`id_mel` as `id_mel`,
+`p`.`playing` as `playing`,
+`p`.`order_id` as `order_id`,
+`m`.`artist` as `artist`,
+`m`.`title` as `title`,
+`m`.`album` as `album`,
+`m`.`path` as `path` 
+from (`playlist` `p` join `melodii` `m`) 
+where (`p`.`id_mel` = `m`.`id_mel`);
+
 
