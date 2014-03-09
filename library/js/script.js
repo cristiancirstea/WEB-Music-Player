@@ -141,7 +141,8 @@ function next(id)
     }
     GetDataFromWS(URI,"[]","POST",
             function(obj){
-                $("#titlu-melodie").text(obj.response[0].artist+" - "+obj.response[0].title);
+                // $("#titlu-melodie").text(obj.response[0].artist+" - "+obj.response[0].title);
+                changeSongTitle(obj.response[0].artist, obj.response[0].title);
                 _ID_PLAYING= parseInt(obj.response[0].id_mel);
                 $("#main-player > source").attr("src",_ROOT_FOLDER+obj.response[0].path);
                var player=$('#main-player').get(0);
@@ -168,7 +169,8 @@ function prev(id)
     }
     GetDataFromWS(URI,"[]","POST",
             function(obj){
-                 $("#titlu-melodie").text(obj.response[0].artist+" - "+obj.response[0].title);
+                 // $("#titlu-melodie").text(obj.response[0].artist+" - "+obj.response[0].title);
+                 changeSongTitle(obj.response[0].artist, obj.response[0].title);
                 _ID_PLAYING= parseInt(obj.response[0].id_mel);
                 $("#main-player > source").attr("src",_ROOT_FOLDER+obj.response[0].path);
                var player=$('#main-player').get(0);
@@ -237,7 +239,8 @@ function play(id,startPlay,loadSong)
         loadSong=true;
     GetDataFromWS(URI,"[]","POST",
             function(obj){
-                $("#titlu-melodie").text(obj.response[0].artist+" - "+obj.response[0].title);
+                // $("#titlu-melodie").text(obj.response[0].artist+" - "+obj.response[0].title);
+                changeSongTitle(obj.response[0].artist, obj.response[0].title);
                 _ID_PLAYING= parseInt(obj.response[0].id_mel);
                 if (loadSong)
                 {
@@ -311,4 +314,8 @@ function AvailableID(theID)
             i++;
         } 
     return theID+''+i;
+}
+
+function changeSongTitle(artist, title) {
+    $("#titlu-melodie").text(artist + " - " + title);
 }
